@@ -1,0 +1,40 @@
+﻿@page
+@model AdminPageModel
+@{
+    Layout = "_Layout";
+}
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var isAdmin = HttpContextAccessor.HttpContext?.Session?.GetString("IsAdmin") == "true";
+}
+
+
+
+
+<div id="sidebar" class="bg-light" style="position: fixed; top: 0; left: 0; height: 100%; width: 250px;">
+    <div class="text-center p-3">
+        <img src="~/images/logo.png" alt="Logo" class="img-fluid mb-3" style="max-width: 150px;">
+        <h4>Admin Menu</h4>
+    </div>
+
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="btn btn-primary w-100 mb-2" asp-page="/Admin/AdminPage">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary w-100 mb-2" asp-page="/Admin/ManageUsers">Manage Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-primary w-100 mb-2" asp-page="/Admin/Settings">Settings</a>
+        </li>
+    </ul>
+</div>
+
+<div id="content" style="margin-left: 260px; padding-top: 60px;">
+    <main role="main" class="pb-3 d-flex flex-column align-items-center" style="margin-top: 60px;">
+        <div>
+            <h1>Welcome to the Admin Page</h1>
+            <p>Use the sidebar to navigate between different administrative sections.</p>
+        </div>
+    </main>
+</div>
